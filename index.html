@@ -1,0 +1,2257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0A0A0A">
+  <meta name="description" content="BCON — BEYOND Conference. Discover purpose, grow in faith, and go beyond limitations.">
+
+  <title>BCON | BEYOND Conference</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --black: #0A0A0A;
+      --white: #FFFFFF;
+      --orange: #FF3B1F;
+      --yellow: #FFB52E;
+      --paper: #F8F8F5;
+      --muted: #777777;
+      --line: #E1E1DC;
+      --font: 'DM Sans', sans-serif;
+      --display: 'Space Grotesk', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--black);
+      font-family: var(--font);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .announcement {
+      background: var(--black);
+      color: white;
+      padding: 10px;
+      text-align: center;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .header {
+      min-height: 78px;
+      padding: 15px 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--paper);
+    }
+    
+    .header a{
+       font-weight:900;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-icon {
+      font: 700 34px var(--display);
+      letter-spacing: -5px;
+    }
+
+    .brand-icon span {
+      color: var(--orange);
+    }
+
+    .brand strong,
+    .brand small {
+      display: block;
+    }
+
+    .brand strong {
+      font: 700 14px var(--display);
+      letter-spacing: 3px;
+    }
+
+    .brand small {
+      color: var(--muted);
+      font-size: 8px;
+      letter-spacing: 1px;
+      margin-top: 3px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .nav a:hover {
+      color: var(--orange);
+    }
+
+    .nav .nav-button {
+      background: var(--orange);
+      color: white;
+      padding: 13px 18px;
+    }
+
+    .menu-toggle {
+      display: none;
+      border: 0;
+      background: none;
+      font-size: 25px;
+      cursor: pointer;
+      color: var(--black);
+    }
+
+    .section {
+      padding-left: 8%;
+      padding-right: 8%;
+    }
+
+    .hero {
+      padding-top: 75px;
+      display: grid;
+      grid-template-columns: 1fr 0.9fr;
+      gap: 5%;
+      position: relative;
+    }
+
+    .hero-content {
+      padding-bottom: 100px;
+    }
+
+    .eyebrow,
+    .section-label {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 25px;
+    }
+
+    h1, h2, h3 {
+      font-family: var(--display);
+    }
+
+    h1 {
+      font-size: clamp(46px, 6.2vw, 86px);
+      line-height: 0.98;
+      letter-spacing: -6px;
+      margin-bottom: 25px;
+    }
+
+    h1 span,
+    h2 em {
+      color: var(--orange);
+      font-style: normal;
+    }
+
+    .hero-description {
+      max-width: 440px;
+      color: #555;
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 16px 20px;
+      font-size: 12px;
+      font-weight: 700;
+      transition: transform 0.2s;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+    }
+
+    .primary {
+      background: var(--orange);
+      color: white;
+    }
+
+    .text-link {
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .hero-note {
+      margin-top: 48px;
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .hero-art {
+      background: var(--orange);
+      min-height: 410px;
+      position: relative;
+      overflow: hidden;
+      align-self: center;
+      margin-bottom: 55px;
+      display: grid;
+      place-items: center;
+      isolation: isolate;
+    }
+
+    .hero-art::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(#ffffff25 1px, transparent 1px),
+        linear-gradient(90deg, #ffffff25 1px, transparent 1px);
+      background-size: 32px 32px;
+      z-index: -1;
+    }
+
+    .art-circle {
+      position: absolute;
+      width: 75%;
+      aspect-ratio: 1;
+      border: 1px solid #ffffff99;
+      border-radius: 50%;
+    }
+
+    .art-shape {
+      position: absolute;
+      width: 120%;
+      height: 90px;
+      background: var(--yellow);
+      transform: rotate(-35deg);
+    }
+
+    .art-word {
+      font: 700 clamp(50px, 8vw, 105px) var(--display);
+      letter-spacing: -7px;
+      color: white;
+      z-index: 1;
+      font-family: var(--font);
+    }
+
+    .art-word span {
+      color: var(--black);
+      font-size: 30px;
+      vertical-align: top;
+    }
+
+    .art-caption,
+    .art-number {
+      position: absolute;
+      color: white;
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .art-caption {
+      top: 20px;
+      left: 20px;
+    }
+
+    .art-number {
+      bottom: 20px;
+      left: 20px;
+    }
+
+    .hero-bottom {
+      position: absolute;
+      left: 8%;
+      right: 8%;
+      bottom: 0;
+      height: 53px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .about {
+      background: white;
+      padding-top: 120px;
+      padding-bottom: 120px;
+      display: grid;
+      grid-template-columns: 0.45fr 1.55fr;
+      gap: 30px;
+    }
+
+    .about h2,
+    .section-heading h2,
+    .programme h2,
+    .faq h2 {
+      font-size: clamp(38px, 5vw, 65px);
+      line-height: 1.05;
+      letter-spacing: -3px;
+    }
+
+    .body-copy {
+      color: #666;
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .about .body-copy {
+      max-width: 580px;
+      margin-top: 25px;
+    }
+
+    .experience,
+    .programme {
+      padding-top: 110px;
+      padding-bottom: 110px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 45px;
+    }
+
+    .section-heading .section-label {
+      margin-bottom: 20px;
+    }
+
+    .section-heading > .body-copy {
+      max-width: 300px;
+      margin-bottom: 5px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .feature {
+      min-height: 310px;
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .feature.dark {
+      background: var(--black);
+      color: white;
+    }
+
+    .feature.orange {
+      background: var(--orange);
+      color: white;
+    }
+
+    .feature.light {
+      background: #E9E9E4;
+    }
+
+    .feature-number,
+    .feature-tag {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .feature-symbol {
+      position: absolute;
+      right: 25px;
+      top: 20px;
+      font-size: 25px;
+    }
+
+    .feature h3 {
+      font-size: clamp(23px, 2.7vw, 34px);
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-top: 55px;
+      margin-bottom: 15px;
+    }
+
+    .feature p {
+      font-size: 12px;
+      line-height: 1.8;
+      opacity: 0.8;
+      max-width: 260px;
+      margin-bottom: 25px;
+    }
+
+    .feature-tag {
+      margin-top: auto;
+    }
+
+    .statement {
+      background: var(--black);
+      color: white;
+      padding: 95px 8%;
+    }
+
+    .statement h2 {
+      font-size: clamp(42px, 7vw, 82px);
+      line-height: 1.05;
+      letter-spacing: -4px;
+      margin-bottom: 25px;
+    }
+
+    .statement-copy {
+      max-width: 530px;
+      color: #BBBBBB;
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .programme {
+      background: white;
+    }
+
+    .schedule {
+      border-top: 1px solid var(--line);
+      margin-top: 40px;
+    }
+
+    .schedule-row {
+      display: grid;
+      grid-template-columns: 40px 1fr auto;
+      gap: 20px;
+      align-items: center;
+      padding: 25px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .schedule-row > span {
+      color: var(--orange);
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .schedule-row h3 {
+      font-size: 18px;
+      margin-bottom: 7px;
+    }
+
+    .schedule-row p {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .schedule-row small,
+    .draft-note {
+      color: var(--muted);
+      font-size: 9px;
+      letter-spacing: 1px;
+    }
+
+    .draft-note {
+      margin-top: 20px;
+      letter-spacing: 0;
+      line-height: 1.7;
+    }
+
+    .register {
+      background: var(--orange);
+      
+    }
+
+    .register .section-label {
+      color: #642115;
+      text-align: left;
+    }
+
+    .register h2 {
+      font-size: clamp(40px, 6.5vw, 78px);
+      line-height: 1;
+      letter-spacing: -4px;
+      margin-bottom: 25px;
+      text-align: left;
+    }
+
+    .register h2 em {
+      color: white;
+    }
+
+    .register > p:not(.section-label) {
+      max-width: 470px;
+      margin: 0 auto 25px;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .dark-button {
+      background: var(--black);
+      color: white;
+    }
+
+    .register > small {
+      display: block;
+      margin-top: 18px;
+      font-size: 10px;
+    }
+
+    .faq {
+      padding-top: 110px;
+      padding-bottom: 110px;
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 8%;
+    }
+
+    .faq h2 {
+      margin-top: 20px;
+    }
+
+    .faq-list {
+      border-top: 1px solid var(--line);
+    }
+
+    details {
+      border-bottom: 1px solid var(--line);
+      padding: 22px 0;
+    }
+
+    summary {
+      list-style: none;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary span {
+      color: var(--orange);
+      font-size: 20px;
+    }
+
+    details p {
+      color: #666;
+      font-size: 12px;
+      line-height: 1.9;
+      margin-top: 15px;
+      max-width: 500px;
+    }
+
+    .footer {
+      background: var(--black);
+      color: white;
+      padding: 40px 8% 22px;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 25px;
+      padding-bottom: 40px;
+    }
+
+    .footer-brand small {
+      color: #999;
+    }
+
+    .footer-top > p {
+      font: 600 21px/1.4 var(--display);
+    }
+
+    .footer-top em {
+      color: var(--orange);
+      font-style: normal;
+    }
+
+    .back-top {
+      font-size: 9px;
+      letter-spacing: 1px;
+      color: #AAA;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #333;
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      color: #999;
+      font-size: 8px;
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 800px) {
+
+      .nav {
+        gap: 15px;
+      }
+
+      .section {
+        padding-left: 6%;
+        padding-right: 6%;
+      }
+
+      .hero {
+        gap: 3%;
+      }
+
+      .hero-art {
+        min-height: 320px;
+      }
+
+      .hero-bottom {
+        left: 6%;
+        right: 6%;
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+
+      .feature {
+        padding: 18px;
+        min-height: 290px;
+      }
+
+      .schedule-row {
+        grid-template-columns: 30px 1fr;
+      }
+
+      .schedule-row small {
+        grid-column: 2;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .header {
+        min-height: 70px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav {
+        display: none;
+        position: absolute;
+        top: 69px;
+        left: 0;
+        right: 0;
+        padding: 20px 6% 25px;
+        background: var(--paper);
+        border-bottom: 1px solid var(--line);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+      }
+
+      .nav.open {
+        display: flex;
+      }
+
+      .nav a:not(.nav-button) {
+        padding: 15px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .nav .nav-button {
+        margin-top: 15px;
+        text-align: center;
+      }
+
+      .hero {
+        display: flex;
+        flex-direction: column;
+        padding-top: 40px;
+      }
+
+      .hero-content {
+        padding-bottom: 35px;
+      }
+
+      h1 {
+        font-size: clamp(43px, 12vw, 68px);
+        letter-spacing: -3px;
+      }
+
+      .hero-art {
+        min-height: 320px;
+        width: 100%;
+        margin-bottom: 0;
+      }
+
+      .art-word {
+        font-size: 80px;
+      }
+
+      .hero-bottom {
+        position: static;
+        height: 55px;
+        gap: 17px;
+        font-size: 8px;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+
+      .about,
+      .experience,
+      .programme,
+      .faq {
+        padding-top: 75px;
+        padding-bottom: 75px;
+      }
+
+      .about h2,
+      .section-heading h2,
+      .programme h2,
+      .faq h2 {
+        font-size: clamp(36px, 10vw, 52px);
+        letter-spacing: -2px;
+      }
+
+      .section-heading {
+        display: block;
+        margin-bottom: 30px;
+      }
+
+      .section-heading > .body-copy {
+        margin-top: 20px;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature {
+        min-height: 250px;
+        padding: 25px;
+      }
+
+      .feature h3 {
+        font-size: 31px;
+        margin-top: 40px;
+      }
+
+      .statement {
+        padding: 70px 6%;
+      }
+
+      .statement h2 {
+        font-size: clamp(38px, 11vw, 58px);
+        letter-spacing: -2px;
+      }
+
+      .register h2 {
+        font-size: clamp(38px, 10vw, 58px);
+        letter-spacing: -2px;
+      }
+
+      .faq {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .footer {
+        padding-left: 6%;
+        padding-right: 6%;
+      }
+
+      .footer-top {
+        flex-wrap: wrap;
+      }
+
+      .footer-top > p {
+        font-size: 18px;
+      }
+
+      .back-top {
+        margin-left: auto;
+      }
+
+      .footer-bottom {
+        flex-wrap: wrap;
+        line-height: 1.7;
+      }
+    }
+    
+/* =================================
+   BCON'26 REGISTRATION SECTION
+================================= */
+
+.register {
+  background: var(--orange);
+  padding: 100px 7%;
+  display: flex;
+  gap: 50px;
+}
+
+.registration-header {
+  max-width: 850px;
+}
+
+.registration-header .section-label {
+  color: #642115;
+  margin-bottom: 22px;
+}
+
+.register h2 {
+  font-family: var(--display);
+  font-size: clamp(40px, 6.5vw, 78px);
+  line-height: 1;
+  letter-spacing: -4px;
+  margin-bottom: 25px;
+}
+
+.register h2 em {
+  color: var(--white);
+  font-style: normal;
+}
+
+.registration-intro {
+  max-width: 520px;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.event-details {
+  gap: 12px;
+  margin: 30px 0 45px;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}*/
+
+.event-divider {
+  opacity: 0.5;
+}
+
+/* FORM CARD */
+
+.registration-card {
+  width: 100%;
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 42px;
+  background: var(--white);
+  color: var(--black);
+  text-align: left;
+}
+
+.form-heading {
+  margin-bottom: 30px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid var(--line);
+}
+
+.form-number {
+  display: block;
+  color: var(--muted);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+
+.form-heading h3 {
+  font-size: 34px;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+  margin-bottom: 10px;
+}
+
+.form-heading p {
+  color: #666;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+/* FORM LAYOUT */
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px 18px;
+}
+
+.form-group {
+  min-width: 0;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 9px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.form-group label span {
+  color: var(--orange);
+}
+
+.form-group label small {
+  float: right;
+  color: var(--muted);
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+.form-group select{
+  background :black;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid #DADAD5;
+  border-radius: 0;
+  background: #FAFAF8;
+  color: var(--black);
+  font-family: var(--font);
+  font-size: 12px;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.form-group input,
+.form-group select {
+  min-height: 48px;
+}
+
+.form-group textarea {
+  min-height: 115px;
+  resize: none;
+  line-height: 1.7;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--orange);
+  background: var(--white);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #999;
+}
+
+.form-full {
+  grid-column: 1 / -1;
+}
+
+/* CONSENT */
+
+.consent-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  margin: 27px 0 22px;
+}
+
+.consent-row input {
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  flex-shrink: 0;
+  accent-color: var(--orange);
+  cursor: pointer;
+}
+
+.consent-row label {
+  color: #555;
+  font-size: 10px;
+  line-height: 1.8;
+  cursor: pointer;
+}
+
+/* SUBMIT BUTTON */
+
+.registration-button {
+  width: 100%;
+  min-height: 54px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 17px 20px;
+  border: 0;
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.registration-button span {
+  font-size: 19px;
+}
+
+.registration-button:hover {
+  background: #292929;
+  transform: translateY(-2px);
+}
+
+.registration-button:focus-visible {
+  outline: 3px solid var(--orange);
+  outline-offset: 3px;
+}
+
+.registration-button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+  transform: none;
+}
+
+/* STATUS AND PRIVACY */
+
+.registration-status {
+  margin-top: 16px;
+  font-size: 12px;
+  line-height: 1.7;
+  font-weight: 600;
+}
+
+.registration-status:empty {
+  display: none;
+}
+
+.form-disclaimer {
+  margin-top: 20px;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.8;
+  text-align: center;
+}
+
+.registration-footer {
+  margin-top: 40px;
+  color: #642115;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 1000px){
+  .register {
+    flex-direction: column;
+  }
+}
+@media (max-width: 600px) {
+  .register {
+    padding: 75px 6%;
+  }
+
+  .register h2 {
+    font-size: clamp(38px, 10vw, 58px);
+    letter-spacing: -2px;
+  }
+
+  .registration-intro {
+    font-size: 13px;
+  }
+
+  .event-details {
+    gap: 10px;
+    margin: 25px 0 32px;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .event-details span {
+    width: 100%;
+  }
+
+  .registration-card {
+    padding: 26px 20px;
+  }
+
+  .form-heading h3 {
+    font-size: 30px;
+  }
+
+  .form-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+
+  .form-full {
+    grid-column: auto;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-size: 16px;
+  }
+
+  .registration-footer {
+    line-height: 1.8;
+  }
+}
+
+.faq summary span {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.faq details[open] summary span {
+  transform: rotate(45deg);
+}
+
+.faq summary:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 6px;
+}
+
+
+/* BCON'26 COUNTDOWN */
+.countdown {
+  background: #0A0A0A;
+  color: #FFFFFF;
+  padding: 90px 20px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.countdown-inner {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.countdown-label {
+  margin-bottom: 18px;
+  color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+}
+
+.countdown h2 {
+  font-size: clamp(30px, 5vw, 56px);
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+  margin: 0 0 16px;
+}
+
+.countdown-description {
+  color: #BDBDBD;
+  font-size: 15px;
+  line-height: 1.7;
+  margin: 0 auto 38px;
+}
+
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.countdown-item {
+  background: transparent;
+  padding: 25px 1px;
+  min-width: 0;
+  font-size:45px;
+  border-right: 1px  solid var(--muted);
+  
+}
+
+.countdown-item:last-child{
+  border:none;
+}
+
+.countdown-item span {
+  display: block;}
+
+.countdown-item small {
+  display: block;
+  color: #ff3b1f;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 12px;
+}
+
+.countdown-status {
+  color: #BDBDBD;
+  font-size: 13px;
+  margin: 24px 0;
+}
+
+.countdown-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #FF3B1F;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 900;
+  padding: 15px 24px;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.countdown-cta:hover {
+  background: #E52D13;
+  transform: translateY(-2px);
+}
+
+.countdown-cta:focus-visible {
+  outline: 2px solid #FFB52E;
+  outline-offset: 4px;
+}
+
+@media (max-width: 520px) {
+  .countdown {
+    padding: 65px 16px;
+  }
+
+  .countdown-grid {
+    gap: 8px;
+  }
+
+  .countdown-item {
+    padding: 20px 4px;
+  }
+
+  .countdown-item span {
+    font-size: clamp(25px, 8vw, 38px);
+  }
+
+  .countdown-item small {
+    font-size: 9px;
+    letter-spacing: 1px;
+    margin-top: 9px;
+  }
+
+  .countdown-description {
+    font-size: 14px;
+  }
+}
+
+
+  </style>
+</head>
+
+<body>
+
+  <div class="announcement">
+    A BEYOND MOVEMENT EXPERIENCE · 2026 
+  </div>
+
+  <header class="header">
+    <a href="#home" class="brand">
+      BCON
+    </a>
+
+    <button class="menu-toggle"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+      aria-controls="main-navigation">☰</button>
+
+    <nav class="nav" id="main-navigation">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#programme">Programme</a>
+      <a href="#faq">FAQs</a>
+      <a href="#register" class="nav-button">Register ↗</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="hero section" id="home">
+      <div class="hero-content">
+        <p class="eyebrow">THIS IS YOUR NEXT STEP</p>
+
+        <h1>GO BEYOND<br>
+          <span>WHERE YOU ARE.</span>
+        </h1>
+
+        <p class="hero-description">
+          A gathering to challenge limitations, discover purpose,
+          grow in faith, and take meaningful steps towards the future.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#register" class="button primary">Be part of BCON ↗</a>
+          <a href="#about" class="text-link">Discover the vision ↓</a>
+        </div>
+
+        <p class="hero-note">
+          YOUR STARTING POINT IS NOT YOUR FINISHING POINT.
+        </p>
+      </div>
+
+      <div class="hero-art" aria-label="Abstract BCON artwork">
+        <div class="art-circle"></div>
+        <div class="art-shape"></div>
+        <div class="art-word">BCON<span></span></div>
+        <p class="art-caption">THINK BEYOND. LIVE BEYOND.</p>
+        <span class="art-number"> 2026</span>
+      </div>
+
+      <div class="hero-bottom">
+        <span>01 - DISCOVER</span>
+        <span>02 - GROW</span>
+        <span>03 - BECOME</span>
+      </div>
+    </section>
+    
+    
+<!-- BCON'26 Countdown -->
+<section class="countdown section" id="countdown">
+  <div class="countdown-inner">
+    <p class="countdown-label">THE COUNTDOWN IS ON</p>
+
+    <h2>Something beyond is coming.</h2>
+
+    <p class="countdown-description">
+      Get ready for BCON. Your next chapter starts here.
+    </p>
+
+    <div class="countdown-grid" aria-label="Time remaining until BCON'26">
+      <div class="countdown-item">
+        <span id="days">00</span>
+        <small>Days</small>
+      </div>
+
+      <div class="countdown-item">
+        <span id="hours">00</span>
+        <small>Hours</small>
+      </div>
+
+      <div class="countdown-item">
+        <span id="minutes">00</span>
+        <small>Minutes</small>
+      </div>
+
+      <div class="countdown-item countdown-seconds">
+        <span id="seconds">00</span>
+        <small>Seconds</small>
+      </div>
+    </div>
+
+    <p class="countdown-status" id="countdown-status" aria-live="polite">
+      Tuesday, 22 December 2026
+    </p>
+
+    <a href="#register" class="countdown-cta">
+      Be Part of It <span aria-hidden="true">↗</span>
+    </a>
+  </div>
+</section>
+
+
+    <section class="about section" id="about">
+      <p class="section-label">01 / THE VISION</p>
+
+      <div>
+        <h2>Your current season<br>
+          doesn't define your <em>whole story.</em>
+        </h2>
+
+        <p class="body-copy">
+          There is more to learn, more to become, and more purpose
+          to walk into. BCON creates space to gain perspective,
+          strengthen your faith, build courage, and move forward
+          with intention.
+        </p>
+      </div>
+    </section>
+
+    <section class="experience section" id="experience">
+      <div class="section-heading">
+        <div>
+          <p class="section-label">02 / THE EXPERIENCE</p>
+          <h2>MAKE ROOM<br>FOR <em>MORE.</em></h2>
+        </div>
+
+        <p class="body-copy">
+          More than an event. An invitation to think differently,
+          deepen your faith, and take action.
+        </p>
+      </div>
+
+      <div class="feature-grid">
+
+        <article class="feature dark">
+          <span class="feature-number">01</span>
+          <span class="feature-symbol">↗</span>
+          <h3>Shift your<br>perspective.</h3>
+          <p>Challenge the limits you've accepted and discover new possibilities.</p>
+          <span class="feature-tag">MINDSET</span>
+        </article>
+
+        <article class="feature orange">
+          <span class="feature-number">02</span>
+          <span class="feature-symbol">✳</span>
+          <h3>Reconnect with<br>your purpose.</h3>
+          <p>Make room for faith, clarity, and a deeper understanding of what matters.</p>
+          <span class="feature-tag">PURPOSE</span>
+        </article>
+
+        <article class="feature light">
+          <span class="feature-number">03</span>
+          <span class="feature-symbol" style="display: inline-block;transform: rotate(179deg);" >←</span>
+          <h3>Take the<br>next step.</h3>
+          <p>Turn what you learn into intentional choices and consistent growth.</p>
+          <span class="feature-tag">ACTION</span>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="statement">
+      <p class="section-label">THE BEYOND MINDSET</p>
+
+      <h2>You can <em>learn, grow,</em><br>
+        and become more.</h2>
+
+      <p class="statement-copy">
+        Your present circumstances do not have to determine your future.
+        Keep trusting God, keep learning, and keep moving.
+      </p>
+    </section>
+
+<section class="programme section" id="programme">
+  <p class="section-label">03 / THE DAY</p>
+
+  <div class="section-heading">
+    <div>
+      <h2>A DAY THAT<br><em>MOVES YOU.</em></h2>
+    </div>
+
+    <p class="body-copy">
+      A virtual experience built around mindset, faith, purpose,
+      meaningful conversations, and practical next steps.
+    </p>
+  </div>
+
+  <div class="schedule">
+
+    <article class="schedule-row">
+      <span>01</span>
+      <div>
+        <h3>Welcome to Beyond</h3>
+        <p>Discover the vision and prepare for the experience.</p>
+      </div>
+      <small>OPENING</small>
+    </article>
+
+    <article class="schedule-row">
+      <span>02</span>
+      <div>
+        <h3>Mindset, Faith &amp; Purpose</h3>
+        <p>Challenge limitations and make room for growth.</p>
+      </div>
+      <small>GROWTH</small>
+    </article>
+
+    <article class="schedule-row">
+      <span>03</span>
+      <div>
+        <h3>Beyond the Limits</h3>
+        <p>Join meaningful conversations and reflect on new perspectives.</p>
+      </div>
+      <small>CONVERSATION</small>
+    </article>
+
+    <article class="schedule-row">
+      <span>04</span>
+      <div>
+        <h3>Your Next Chapter</h3>
+        <p>Turn insights into intentional choices and practical action.</p>
+      </div>
+      <small>NEXT STEPS</small>
+    </article>
+
+  </div>
+
+  <p class="draft-note">
+    BCON takes place online on Tuesday, 22 December 2026.
+    Official session times and speaker announcements will be
+    published when confirmed.
+  </p>
+</section>
+
+
+
+    
+    <!-- BCON'26 REGISTRATION -->
+<section class="register" id="register">
+
+  <div class="registration-header">
+    <p class="section-label">04 / YOUR NEXT STEP</p>
+
+    <h2>
+      THE NEXT CHAPTER<br>
+      STARTS <em>WITH YOU.</em>
+    </h2>
+
+    <p class="registration-intro">
+      One day can change your perspective.
+      Join us for BCON, a free online conference
+      created to help you discover purpose, grow in faith,
+      and go beyond your limitations.
+    </p>
+
+    <div class="event-details">
+      <span>22 DECEMBER 2026</span>
+      <span class="event-divider">•</span>
+      <span>ONLINE CONFERENCE</span>
+      <span class="event-divider">•</span>
+      <span>FREE ENTRY</span>
+    </div>
+  </div>
+
+  <div class="registration-card">
+
+    <div class="form-heading">
+      <span class="form-number">BCON REGISTRATION</span>
+
+      <h3>Save your spot.</h3>
+
+      <p>
+        Complete the form below to register for the conference.
+      </p>
+    </div>
+
+    <form id="bcon-registration-form" action="https://script.google.com/macros/s/AKfycbxmGwYajmaeEH_5Y2gfZvXH7qdoNycuCvCX50F2yFULI5SpeyWICMKWQRN2ThEJnoBDVw/exec"
+  method="POST"
+  target="bcon-registration-frame">
+
+      <div class="form-grid">
+
+        <div class="form-group">
+          <label for="fullName">Full name <span>*</span></label>
+
+          <input
+            type="text"
+            id="fullName"
+            name="fullName"
+            placeholder="Enter your full name"
+            autocomplete="name"
+            maxlength="100"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email address <span>*</span></label>
+
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="you@example.com"
+            autocomplete="email"
+            maxlength="254"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="whatsapp">WhatsApp number <span>*</span></label>
+
+          <input
+            type="tel"
+            id="whatsapp"
+            name="whatsapp"
+            placeholder="+234 800 000 0000"
+            autocomplete="tel"
+            maxlength="25"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="country">Country <span>*</span></label>
+
+          <input
+            type="text"
+            id="country"
+            name="country"
+            placeholder="Your country"
+            autocomplete="country-name"
+            maxlength="80"
+            required
+          >
+        </div>
+
+        <div class="form-group form-full">
+          <label for="occupation">
+            Which best describes you? <span>*</span>
+          </label>
+
+          <select id="occupation" name="occupation" required>
+            <option value="" disabled selected>
+              Select your category
+            </option>
+            <option value="Student">Student</option>
+            <option value="Working Professional">
+              Working professional
+            </option>
+            <option value="Entrepreneur">Entrepreneur</option>
+            <option value="Creative">Creative</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group form-full">
+          <label for="expectations">
+            What do you hope to gain from BCON?
+            <small>OPTIONAL</small>
+          </label>
+
+          <textarea
+            id="expectations"
+            name="expectations"
+            rows="4"
+            maxlength="1000"
+            placeholder="Tell us what you hope to learn or experience..."
+          ></textarea>
+        </div>
+
+      </div>
+
+      <div class="consent-row">
+        <input
+          type="checkbox"
+          id="consent"
+          name="consent"
+          value="Yes"
+          required
+        >
+
+        <label for="consent">
+          I agree to receive relevant BCON registration
+          information and conference updates.
+        </label>
+      </div>
+
+      <button
+        type="submit"
+        class="registration-button"
+        id="registration-submit"
+      >
+        Register for Free <span>↗</span>
+      </button>
+
+      <p
+        class="registration-status"
+        id="registration-status"
+        role="status"
+        aria-live="polite"
+      ></p>
+
+      <p class="form-disclaimer">
+        Your information will be used to manage your registration
+        and communicate relevant conference updates.
+      </p>
+
+    </form>
+<iframe
+  name="bcon-registration-frame"
+  id="bcon-registration-frame"
+  title="BCON'26 registration response"
+  style="display:none"
+></iframe>
+    <p style="text-align:center" class="registration-footer">
+    YOUR STARTING POINT IS NOT YOUR FINISHING POINT.
+  </p>
+
+  </div>
+
+  
+
+</section>
+
+
+    <section class="faq section" id="faq">
+      <div>
+        <p class="section-label">05 / GOOD TO KNOW</p>
+        <h2>QUESTIONS?<br><em>START HERE.</em></h2>
+        <p class="body-copy" style="margin-top: 20px;">
+      Everything you need to know before joining BCON.
+      Have another question? Contact the organising team or join the WhatsApp group for more informations. 
+    </p>
+
+    <a
+      href="mailto:join.beyond1@gmail.com?subject=BCON%20Enquiry"
+      class="text-link"
+      style="display: inline-block; margin-top: 22px; padding: 20px; color: #ffffff; background:#ff3b1f"
+    >
+      Contact the team ↗
+    </a><span style="padding:20px">or</span>
+    <a href="Join a group" class="text-link">Join a group ↗</a>
+  </div>
+      </div>
+      
+      
+      <div class="faq-list">
+    <details>
+      <summary>
+        What is BCON?
+        <span aria-hidden="true">+</span>
+      </summary>
+      <p>
+        BCON is BEYOND Conference, an experience created to help
+        people challenge limiting beliefs, discover purpose, grow
+        in faith, and take meaningful steps towards their future.
+        It's part of the Beyond movement's vision to help people
+        go beyond where they are.
+      </p>
+    </details>
+
+    <details>
+      <summary>
+        When will BCON take place?
+        <span aria-hidden="true">+</span>
+      </summary>
+      <p>
+        BCON is scheduled for Tuesday, 22 December 2026.
+        The conference will take place online. The official start
+        time and access instructions will be communicated once
+        confirmed.
+      </p>
+    </details>
+
+    <details>
+      <summary>
+        Is registration free?
+        <span aria-hidden="true">+</span>
+      </summary>
+      <p>
+        Yes. Registration for BCON is free. Complete the
+        registration form on this website to register. Your
+        registration is confirmed once you receive an official
+        confirmation.
+      </p>
+    </details>
+
+    <details>
+      <summary>
+        How do I join the online conference?
+        <span aria-hidden="true">+</span>
+      </summary>
+      <p>
+        Official participation instructions and the online access
+        link will be shared with registered attendees when they
+        are available. Make sure you provide a valid email address
+        when registering.
+      </p>
+    </details>
+  
+    <details>
+      <summary>
+        Who can attend BCON?
+        <span aria-hidden="true">+</span>
+      </summary>
+      <p>
+        BCON welcomes people who want to learn, grow, strengthen
+        their faith, discover purpose, and take positive steps
+        towards their future. If you're ready to challenge your
+        limitations and grow, you're welcome to participate.
+      </p>
+    </details>
+
+    <details>
+      <summary>
+        Will speakers and the programme be announced?
+        <span aria-hidden="true">+</span>
+      </summary>
+      <p>
+        Details about speakers, session times, and the final
+        programme will be published as they are confirmed.
+        Check this website for official updates.
+      </p>
+    </details>
+  </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-top">
+      <a href="#home" class="brand footer-brand">
+        BCON
+      </a>
+
+      <a href="#home" class="back-top">BACK TO TOP ↑</a>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> BCON · BEYOND MOVEMENT</span>
+    </div>
+  </footer>
+
+  <script>
+     
+const menuButton = document.querySelector(".menu-toggle");
+const navigation = document.querySelector(".nav");
+
+// Mobile navigation
+menuButton.addEventListener("click", () => {
+  const isOpen = navigation.classList.toggle("open");
+
+  menuButton.setAttribute("aria-expanded", String(isOpen));
+  menuButton.textContent = isOpen ? "✕" : "☰";
+});
+
+// Close the mobile menu after choosing a link
+navigation.querySelectorAll("a").forEach((link) => {
+  link.addEventListener("click", () => {
+    navigation.classList.remove("open");
+    menuButton.setAttribute("aria-expanded", "false");
+    menuButton.textContent = "☰";
+  });
+});
+
+// Automatically update the copyright year
+document.querySelector("#year").textContent =
+  new Date().getFullYear();
+
+
+const countdownTarget = new Date(
+  "2026-12-22T00:00:00+01:00"
+).getTime();
+
+const countdownStatus = document.getElementById("countdown-status");
+
+function updateCountdown() {
+  const now = Date.now();
+  const remaining = countdownTarget - now;
+
+  if (remaining <= 0) {
+    document.getElementById("days").textContent = "00";
+    document.getElementById("hours").textContent = "00";
+    document.getElementById("minutes").textContent = "00";
+    document.getElementById("seconds").textContent = "00";
+
+    countdownStatus.textContent =
+      "It's conference day! Check the official event updates for access details.";
+
+    return;
+  }
+
+  const days = Math.floor(remaining / (1000 * 60 * 60 * 24));
+  const hours = Math.floor(
+    (remaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+  );
+  const minutes = Math.floor(
+    (remaining % (1000 * 60 * 60)) / (1000 * 60)
+  );
+  const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
+
+  document.getElementById("days").textContent =
+    String(days).padStart(2, "0");
+  document.getElementById("hours").textContent =
+    String(hours).padStart(2, "0");
+  document.getElementById("minutes").textContent =
+    String(minutes).padStart(2, "0");
+  document.getElementById("seconds").textContent =
+    String(seconds).padStart(2, "0");
+}
+
+updateCountdown();
+
+const countdownInterval = setInterval(() => {
+  updateCountdown();
+
+  if (Date.now() >= countdownTarget) {
+    clearInterval(countdownInterval);
+  }
+}, 1000);
+
+/*
+const registrationForm = document.getElementById(
+  "bcon-registration-form"
+);
+
+const registrationStatus = document.getElementById(
+  "registration-status"
+);
+
+const registrationButton = document.getElementById(
+  "registration-submit"
+);
+
+let registrationPending = false;
+
+window.addEventListener("message", function (event) {
+  // Accept results only from our form's response iframe.
+  const frame = document.getElementById(
+    "bcon-registration-frame"
+  );
+
+  if (!frame || event.source !== frame.contentWindow) {
+    return;
+  }
+
+  const data = event.data;
+
+  if (
+    !data ||
+    data.type !== "BCON_REGISTRATION_RESULT" ||
+    !registrationPending
+  ) {
+    return;
+  }
+
+  registrationPending = false;
+  registrationButton.disabled = false;
+  registrationButton.innerHTML =
+    'Register for Free <span>↗</span>';
+
+  if (!data.success) {
+    registrationStatus.textContent = data.message;
+    registrationStatus.style.color = "#FF3B1F";
+    return;
+  }
+
+  registrationStatus.textContent =
+    "Registration confirmed! " + data.message;
+
+  registrationStatus.style.color = "#16803C";
+
+  // Display the group button only after server confirmation.
+  if (
+    typeof data.groupUrl === "string" &&
+    /^https:\/\/chat\.whatsapp\.com\/[A-Za-z0-9_-]+\/?$/.test(
+      data.groupUrl
+    )
+  ) {
+    let joinButton = document.getElementById(
+      "bcon-join-whatsapp"
+    );
+
+    if (!joinButton) {
+      joinButton = document.createElement("a");
+      joinButton.id = "bcon-join-whatsapp";
+      joinButton.className = "registration-button";
+      joinButton.style.display = "block";
+      joinButton.style.textAlign = "center";
+      joinButton.style.textDecoration = "none";
+      joinButton.style.marginTop = "16px";
+      joinButton.target = "_blank";
+      joinButton.rel = "noopener noreferrer";
+      joinButton.textContent = "Join BCON'26 WhatsApp Group ↗";
+
+      registrationButton.insertAdjacentElement(
+        "afterend",
+        joinButton
+      );
+    }
+
+    joinButton.href = data.groupUrl;
+    joinButton.hidden = false;
+
+    registrationStatus.textContent =
+      "You're registered! Tap below to join the official WhatsApp group.";
+  }
+
+  registrationButton.disabled = true;
+});
+
+registrationForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  if (registrationPending) return;
+
+  registrationStatus.textContent = "Submitting your registration...";
+  registrationStatus.style.color = "";
+  registrationButton.disabled = true;
+  registrationButton.textContent = "Submitting...";
+
+  const existingJoinButton = document.getElementById(
+    "bcon-join-whatsapp"
+  );
+
+  if (existingJoinButton) {
+    existingJoinButton.hidden = true;
+  }
+
+  registrationPending = true;
+
+  // Submit to the hidden iframe without leaving the page.
+  HTMLFormElement.prototype.submit.call(registrationForm);
+});*/
+// =====================================================
+// BCON'26 — WEBSITE REGISTRATION CONTROLLER
+// =====================================================
+
+(function () {
+  "use strict";
+
+  const registrationForm = document.getElementById(
+    "bcon-registration-form"
+  );
+
+  const registrationStatus = document.getElementById(
+    "registration-status"
+  );
+
+  const registrationButton = document.getElementById(
+    "registration-submit"
+  );
+
+  const registrationFrame = document.getElementById(
+    "bcon-registration-frame"
+  );
+
+  if (
+    !registrationForm ||
+    !registrationStatus ||
+    !registrationButton ||
+    !registrationFrame
+  ) {
+    console.error(
+      "BCON'26: A required registration element is missing."
+    );
+    return;
+  }
+
+  let registrationPending = false;
+  let registrationTimeout = null;
+
+  const originalButtonHTML =
+    'Register for Free <span>↗</span>';
+
+  // ---------------------------------------------------
+  // Display registration messages
+  // ---------------------------------------------------
+
+  function showStatus(message, success) {
+    registrationStatus.textContent = message;
+
+    registrationStatus.style.color = success
+      ? "#16803C"
+      : "#FF3B1F";
+  }
+
+  // ---------------------------------------------------
+  // Restore the submit button
+  // ---------------------------------------------------
+
+  function resetButton() {
+    registrationButton.disabled = false;
+    registrationButton.innerHTML = originalButtonHTML;
+  }
+
+  // ---------------------------------------------------
+  // Finish waiting for a response
+  // ---------------------------------------------------
+
+  function finishWaiting() {
+    registrationPending = false;
+
+    if (registrationTimeout !== null) {
+      clearTimeout(registrationTimeout);
+      registrationTimeout = null;
+    }
+  }
+
+  // ---------------------------------------------------
+  // Receive the Apps Script response
+  // ---------------------------------------------------
+
+  window.addEventListener("message", function (event) {
+    // Accept messages only from the response iframe.
+    if (event.source !== registrationFrame.contentWindow) {
+      return;
+    }
+
+    const data = event.data;
+
+    if (
+      !data ||
+      data.type !== "BCON_REGISTRATION_RESULT" ||
+      typeof data.success !== "boolean" ||
+      !registrationPending
+    ) {
+      return;
+    }
+
+    finishWaiting();
+
+    if (!data.success) {
+      resetButton();
+
+      showStatus(
+        data.message || "Registration failed. Please try again.",
+        false
+      );
+
+      return;
+    }
+
+    // Registration succeeded or this email was already registered.
+    registrationButton.disabled = true;
+    registrationButton.innerHTML = "Registration Confirmed ✓";
+
+    showStatus(
+      data.message || "Your registration is confirmed.",
+      true
+    );
+
+    // Remove any previously displayed WhatsApp button.
+    let joinButton = document.getElementById(
+      "bcon-join-whatsapp"
+    );
+
+    if (joinButton) {
+      joinButton.remove();
+    }
+
+    // Only display a valid group invite link.
+    const groupPattern =
+      /^https:\/\/chat\.whatsapp\.com\/[A-Za-z0-9_-]+\/?$/;
+
+    if (
+      typeof data.groupUrl === "string" &&
+      groupPattern.test(data.groupUrl)
+    ) {
+      joinButton = document.createElement("a");
+
+      joinButton.id = "bcon-join-whatsapp";
+      joinButton.className = "registration-button";
+      joinButton.href = data.groupUrl;
+      joinButton.target = "_blank";
+      joinButton.rel = "noopener noreferrer";
+      joinButton.textContent =
+        "Join BCON'26 WhatsApp Group ↗";
+
+      joinButton.style.display = "block";
+      joinButton.style.textAlign = "center";
+      joinButton.style.textDecoration = "none";
+      joinButton.style.marginTop = "16px";
+
+      registrationButton.insertAdjacentElement(
+        "afterend",
+        joinButton
+      );
+
+      showStatus(
+        "You're registered! Tap below to join the official WhatsApp group.",
+        true
+      );
+    }
+  });
+
+  // ---------------------------------------------------
+  // Submit without leaving the conference website
+  // ---------------------------------------------------
+
+  registrationForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    if (registrationPending) {
+      return;
+    }
+
+    // Keep normal browser form validation.
+    if (!registrationForm.reportValidity()) {
+      return;
+    }
+
+    finishWaiting();
+    registrationPending = true;
+
+    registrationButton.disabled = true;
+    registrationButton.textContent = "Submitting...";
+
+    registrationStatus.textContent =
+      "Submitting your registration. Please wait...";
+
+    registrationStatus.style.color = "";
+
+    // Remove any previous WhatsApp button.
+    const oldJoinButton = document.getElementById(
+      "bcon-join-whatsapp"
+    );
+
+    if (oldJoinButton) {
+      oldJoinButton.remove();
+    }
+
+    // Allow time for Apps Script to process the submission.
+    registrationTimeout = setTimeout(function () {
+      if (!registrationPending) {
+        return;
+      }
+
+      finishWaiting();
+      resetButton();
+
+      showStatus(
+        "We haven't received a confirmation yet. Check your connection and try again. If your registration was already saved, use the same email address to check again.",
+        false
+      );
+    }, 45000);
+
+    // Submit the form to the hidden iframe.
+    // The browser remains on the current conference page.
+    HTMLFormElement.prototype.submit.call(registrationForm);
+  });
+})();
+
+  </script>
+</body>
+</html>
